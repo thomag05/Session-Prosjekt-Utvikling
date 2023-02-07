@@ -1,0 +1,28 @@
+{
+  "name": "sessionsprosjekt",
+  "version": "1.0.0",
+  "description": "Webapp som bruker sessions",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomag05/Session-Prosjekt-Utvikling.git"
+  },
+  "author": "thomag05",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thomag05/Session-Prosjekt-Utvikling/issues"
+  },
+  "homepage": "https://github.com/thomag05/Session-Prosjekt-Utvikling#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "better-sqlite3": "^8.1.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "hbs": "^4.2.0",
+    "path": "^0.12.7"
+  }
+}
