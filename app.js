@@ -4,13 +4,16 @@ const bcrypt = require("bcrypt");
 const path = require("path");
 const hbs = require("hbs");
 const db = require("better-sqlite3")("endusers.db")
+const dotenv = require('dotenv').config()
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, "www")));
+const rootpath = path.join(__dirname, "www")
+const hbspath = path.join(__dirname, "views")
+
+// app.use(express.static(path.join(__dirname, "www")));
 app.use(express.urlencoded({extended: true}))
 
-require('dotenv').config()
 const SECRET_SESSION_KEY = process.env.SECRET_SESSION_KEY;
 
 app.use(session({
@@ -20,8 +23,52 @@ app.use(session({
 }))
 
 
+app.get("/registrer", (req, res) => {
+    res.sendFile(rootpath + "/registrer.html")
+})
 
+app.get("/", (req, res) => {
+    if(req.session.loggedin) {
+        res.sendFile(rootpath + "/index.html")
+    } else {
+        res.sendFile(rootpath + "/login.html")
+    }
+})
 
+app.get("/listPlayers", (req, res) => {
+    if(req.session.loggedin) {
+        let query = "SELECT * FROM Player"
+        let player = db.prepare(query).all()
+        res.render(hbspath + "/pages/listPlayers.hbs", {
+            Players: player
+        })
+    } else {
+        res.sendFile(rootpath + "/login.html")
+    }
+})
+
+app.post("/login", async (req, res) => {
+    let login = req.body;
+
+    let userData = db.prepare("SELECT * FROM Player WHERE email = ?").get(login.email)
+    if(await bcrypt.compare(login.password, userData.password)) {
+        req.session.loggedin = true
+        res.redirect("back")
+    } else {
+        res.redirect("back")
+    }
+})
+
+app.post(("/NewPlayer"), async (req, res) => {
+    let ans = req.body;
+
+    let hash = await bcrypt.hash(ans.password, 10)
+    console.log(ans)
+    console.log(hash)
+    db.prepare("INSERT INTO Player (name, email, password) VALUES (?, ?, ?)").run(ans.name, ans.email, hash)
+
+    res.redirect("/registrer")
+})
 
 app.listen("3000", () => {
     console.log("Server listening at http://localhost:3000")
