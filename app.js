@@ -35,10 +35,15 @@ app.get("/", (req, res) => {
     }
 })
 
+
 app.get("/listPlayers", (req, res) => {
     if(req.session.loggedin) {
-        let query = "SELECT * FROM Player"
-        let player = db.prepare(query).all()
+        let queryPlayers = `SELECT PlayerTeam.player_id, PlayerTeam.team_id, Player.id, Player.playerName, player.email, Team.id, Team.teamName
+        FROM PlayerTeam
+        INNER JOIN Player on PlayerTeam.player_id = Player.id
+        INNER JOIN Team on PlayerTeam.team_id = Team.id;`
+
+        let player = db.prepare(queryPlayers).all()
         res.render(hbspath + "/pages/listPlayers.hbs", {
             Players: player
         })
@@ -65,7 +70,7 @@ app.post(("/NewPlayer"), async (req, res) => {
     let hash = await bcrypt.hash(ans.password, 10)
     console.log(ans)
     console.log(hash)
-    db.prepare("INSERT INTO Player (name, email, password) VALUES (?, ?, ?)").run(ans.name, ans.email, hash)
+    db.prepare("INSERT INTO Player (playerName, email, password) VALUES (?, ?, ?)").run(ans.name, ans.email, hash)
 
     res.redirect("/registrer")
 })
