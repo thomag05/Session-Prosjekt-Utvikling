@@ -1,0 +1,159 @@
+nav {
+    background-color: #333; /* Set the background color */
+    overflow: hidden; /* Hide the overflow content */
+  }
+  
+  nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  nav li {
+    float: left; /* Float the list items to the left */
+  }
+  
+  nav li a {
+    display: block; /* Make the links display as block elements */
+    color: white; /* Set the text color */
+    text-align: center; /* Center the text within the links */
+    padding: 14px 16px; /* Add some padding to the links */
+    text-decoration: none; /* Remove the underline from the links */
+    font-size: 18px; /* Set the font size */
+  }
+  
+  nav li a:hover {
+    background-color: #111; /* Add a background color on hover */
+  }
+  
+  /* Style the active link */
+  nav .active {
+    background-color: #4CAF50;
+  }
+  
+  /* Style the user profile link */
+  nav li.profile {
+    float: right; /* Float the profile link to the right */
+  }
+  
+  nav li.profile a {
+    padding: 14px 16px; /* Add some padding to the profile link */
+    font-size: 18px; /* Set the font size */
+  }
+  
+  nav li.profile a:hover {
+    background-color: #4CAF50; /* Add a background color on hover */
+  }
+  
+
+  table {
+    border-collapse: collapse; /* Collapse the table borders */
+    width: 100%; /* Set the table width to 100% of the container */
+  }
+  
+  th, td {
+    text-align: left; /* Left align the table cells */
+    padding: 8px; /* Add some padding to the table cells */
+    border-bottom: 1px solid #ddd; /* Add a bottom border to the table cells */
+  }
+  
+  th {
+    background-color: #4CAF50; /* Set the header background color */
+    color: white; /* Set the header text color */
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2; /* Set the even row background color */
+  }
+  
+  tr:hover {
+    background-color: #ddd; /* Add a background color on hover */
+  }
+  
+
+   /* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  } 
+
+  form {
+    width: 400px; /* Set the width of the form */
+    margin: 0 auto; /* Center the form horizontally */
+    padding: 20px; /* Add some padding to the form */
+    border: 1px solid #ccc; /* Add a border to the form */
+    border-radius: 5px; /* Add rounded corners to the form */
+  }
+  
+  form h2 {
+    text-align: center; /* Center the form header */
+    margin-bottom: 20px; /* Add some space below the form header */
+  }
+  
+  form label {
+    display: block; /* Display the form labels as block elements */
+    margin-bottom: 8px; /* Add some space below the form labels */
+    font-weight: bold; /* Set the font weight for the form labels */
+  }
+  
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="password"] {
+    display: block; /* Display the form input fields as block elements */
+    width: 100%; /* Set the width of the form input fields to 100% */
+    padding: 8px; /* Add some padding to the form input fields */
+    border: 1px solid #ccc; /* Add a border to the form input fields */
+    border-radius: 5px; /* Add rounded corners to the form input fields */
+    margin-bottom: 16px; /* Add some space below the form input fields */
+  }
+  
+  form button {
+    display: block; /* Display the form button as a block element */
+    width: 100%; /* Set the width of the form button to 100% */
+    padding: 8px; /* Add some padding to the form button */
+    background-color: #4CAF50; /* Set the background color of the form button */
+    color: white; /* Set the text color of the form button */
+    border: none; /* Remove the border from the form button */
+    border-radius: 5px; /* Add rounded corners to the form button */
+    margin-top: 16px; /* Add some space above the form button */
+  }
+  
+  form button:hover {
+    background-color: #2e8b57; /* Change the background color of the form button on hover */
+  }
+  
+  .form-error {
+    color: red; /* Set the color for form error messages */
+    margin-top: 8px; /* Add some space above form error messages */
+  }
+  

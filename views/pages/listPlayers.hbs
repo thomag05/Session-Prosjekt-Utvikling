@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,8 +8,24 @@
     <title>List Data</title>
   </head>
   <body>
-    <button id="player">Players</button>
-    <table>
+      <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/registrer">Registrer</a></li>
+            <li><a href="/listPlayers">players</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/profile">Profile</a></li>
+          </ul>
+    </nav> 
+
+    <div class="tab">
+  <button class="tablinks" onclick="openTable(event, 'Players')">Players</button>
+  <button class="tablinks" onclick="openTable(event, 'Teams')">Teams</button>
+</div>
+
+<!-- Tab content -->
+<div id="Players" class="tabcontent">
+ <table>
       <tr>
         <th>Name</th>
         <th>Email</th>
@@ -22,5 +39,43 @@
         </tr>
       {{/each}}
     </table>
+</div>
+
+<div id="Teams" class="tabcontent">
+ <table>
+      <tr>
+        <th>Team Name</th>
+      </tr>
+      {{#each Teams}}
+        <tr>
+          <td>{{this.teamName}}
+            
+          </td>
+        </tr>
+      {{/each}}
+    </table>
+</div>
+
+   
   </body>
+  <script>
+    function openTable(evt, cityName) {
+
+  var i, tabcontent, tablinks;
+
+
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+} 
+  </script>
 </html>
